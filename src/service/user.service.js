@@ -14,7 +14,7 @@ class UserService {
   // 查询用户
   async findUserByName(username) {
     const statement = 'SELECT * FROM user WHERE username = ?;'
-    const [ values] = await connection.execute(statement,[username])
+    const [values] = await connection.execute(statement,[username])
     return values
   }
 }
