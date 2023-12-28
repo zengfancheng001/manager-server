@@ -3,6 +3,7 @@ const {
   NAME_OR_PASSWORD_IS_REQUIRED,
   NAME_IS_ALREADY_EXISTS,
   NAME_IS_NOT_EXISTS,
+  PASSWORD_IS_INCORRENT,
 } = require("../config/error");
 
 app.on("error", (error, ctx) => {
@@ -21,6 +22,10 @@ app.on("error", (error, ctx) => {
     case NAME_IS_NOT_EXISTS:
       code = -1003;
       message = "用户名不存在，请重新输入~";
+      break;
+    case PASSWORD_IS_INCORRENT:
+      code = -1004;
+      message = "密码错误,请重新输入~";
       break;
   }
 

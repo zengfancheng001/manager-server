@@ -7,15 +7,15 @@ class UserService {
     // 拼接sql语句
     const statement = "INSERT INTO user (username, password) VALUES (?, ?);";
     // 执行语句
-    const [result]= await connection.execute(statement, [username, password]);
-    return result
+    const [result] = await connection.execute(statement, [username, password]);
+    return result;
   }
 
   // 查询用户
   async findUserByName(username) {
-    const statement = 'SELECT * FROM user WHERE username = ?;'
-    const [values] = await connection.execute(statement,[username])
-    return values
+    const statement = "SELECT * FROM user WHERE username = ?;";
+    const [values] = await connection.execute(statement, [username]);
+    return values;
   }
 }
 
