@@ -4,6 +4,7 @@ const {
   NAME_IS_ALREADY_EXISTS,
   NAME_IS_NOT_EXISTS,
   PASSWORD_IS_INCORRENT,
+  UNAUTHORIZATION,
 } = require("../config/error");
 
 app.on("error", (error, ctx) => {
@@ -26,6 +27,10 @@ app.on("error", (error, ctx) => {
     case PASSWORD_IS_INCORRENT:
       code = -1004;
       message = "密码错误,请重新输入~";
+      break;
+    case UNAUTHORIZATION:
+      code = -1005;
+      message = "无效的token或token已经过期~";
       break;
   }
 
