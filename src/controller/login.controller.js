@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { PRIVATE_KEY } = require("../config/secret");
+// const { PRIVATE_KEY } = require("../config/secret");
 
 class LoginController {
   // 颁发令牌
