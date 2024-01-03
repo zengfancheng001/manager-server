@@ -41,7 +41,6 @@ const verifyAuth = async (ctx, next) => {
     const result = jwt.verify(token, "PRIVATE_KEY", {
       algorithm: ["HS256"],
     });
-    // console.log(result);
     // 将token中的信息保存下来
     ctx.user = result;
 
