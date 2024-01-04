@@ -15,6 +15,17 @@ class UserController {
     };
   }
 
+  // 删除用户
+  async deleteUserById(ctx, next) {
+    const { id } = ctx.params;
+
+    const result = await userService.deleteUserById(id);
+    ctx.body = {
+      code: 0,
+      message: "删除用户成功~",
+    };
+  }
+
   // 获取用户详细信息
   async getUserInfo(ctx, next) {
     // const result = await userService.findUserByName(username);

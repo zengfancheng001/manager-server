@@ -9,6 +9,9 @@ const userRouter = new KoaRouter({ prefix: "/users" });
 // 用户注册接口
 userRouter.post("/", verifyUser, handlePassword, UserController.create);
 
+// 删除用户数据
+userRouter.delete("/:id", UserController.deleteUserById);
+
 // 获取用户信息接口
 userRouter.post("/list", verifyAuth, UserController.queryUsersList);
 

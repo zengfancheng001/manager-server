@@ -18,6 +18,13 @@ class UserService {
     return values;
   }
 
+  // 根据用户名查询用户信息
+  async deleteUserById(id) {
+    const statement = "DELETE FROM user WHERE id = ?;";
+    const [value] = await connection.execute(statement, [id]);
+    return value;
+  }
+
   // 查询用户列表
   async queryUserList(offset, size) {
     const statement = "SELECT * FROM user LIMIT ? OFFSET ?";
@@ -30,7 +37,6 @@ class UserService {
   async querUserCount() {
     const statement = "select count(*) as userCount from user;";
     const [result] = await connection.execute(statement);
-    console.log(result);
 
     return result;
   }
