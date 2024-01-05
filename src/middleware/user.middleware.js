@@ -15,7 +15,6 @@ const verifyUser = async (ctx, next) => {
 
   // 判断username是否在数据库中存在
   const users = await userService.findUserByName(username);
-  console.log(users);
 
   if (users.length) {
     return ctx.app.emit("error", NAME_IS_ALREADY_EXISTS, ctx);
@@ -28,6 +27,7 @@ const verifyUser = async (ctx, next) => {
 // 用户密码加密
 const handlePassword = async (ctx, next) => {
   // 取出密码
+
   const { password } = ctx.request.body;
   // 加密密码并放回
   ctx.request.body.password = md5password(password);

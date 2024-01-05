@@ -6,7 +6,7 @@ const { verifyAuth } = require("../middleware/login.middleware");
 // 创建路由对象
 const userRouter = new KoaRouter({ prefix: "/users" });
 
-// 用户注册接口
+// 用户注册或新增用户接口
 userRouter.post("/", verifyUser, handlePassword, UserController.create);
 
 // 删除用户数据
