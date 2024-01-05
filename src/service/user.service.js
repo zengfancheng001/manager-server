@@ -3,11 +3,22 @@ const connection = require("../app/database");
 class UserService {
   async create(user) {
     // 获取用户信息
-    const { username, password } = user;
+    const { username, realname, password, cellphone, roleId, departmentId } =
+      user;
     // 拼接sql语句
-    const statement = "INSERT INTO user (username, password) VALUES (?, ?);";
+    const statement =
+      "INSERT INTO user (username,realname, password,cellphone,roleId,departmentId) VALUES (?, ?,?,?,?,?);";
     // 执行语句
-    const [result] = await connection.execute(statement, [username, password]);
+    console.log(user);
+
+    const [result] = await connection.execute(statement, [
+      username,
+      realname,
+      password,
+      cellphone,
+      roleId,
+      departmentId,
+    ]);
     return result;
   }
 
