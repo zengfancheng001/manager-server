@@ -16,6 +16,9 @@ userRouter.delete("/:id", UserController.deleteUserById);
 userRouter.post("/list", verifyAuth, UserController.queryUsersList);
 
 // 获取用户详细信息接口
-userRouter.get("/list/5", verifyAuth, UserController.getUserInfo);
+userRouter.get("/list/1", verifyAuth, UserController.getUserInfo);
+
+// 编辑更新用户信息
+userRouter.patch("/:id", verifyAuth, UserController.editUserInfo);
 
 module.exports = userRouter;

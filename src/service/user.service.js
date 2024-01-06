@@ -9,8 +9,6 @@ class UserService {
     const statement =
       "INSERT INTO user (username,realname, password,cellphone,roleId,departmentId) VALUES (?, ?,?,?,?,?);";
     // 执行语句
-    console.log(user);
-
     const [result] = await connection.execute(statement, [
       username,
       realname,
@@ -48,8 +46,30 @@ class UserService {
   async querUserCount() {
     const statement = "select count(*) as userCount from user;";
     const [result] = await connection.execute(statement);
-
     return result;
+  }
+
+  // 编辑用户
+  async editUserInfo(user) {
+    const { id, username, realname, cellphone, roleId, departmentId } = user;
+    // 拼接sql语句
+    const statement =
+      "UPDATE user SET username=?,realname=?,cellphone=?,roleId=?,departmentId=? WHERE id=?;";
+    // 执行语句
+
+    try {
+      const [result] = await connection.execute(statement, [
+        username,
+        realname,
+        cellphone,
+        roleId,
+        departmentId,
+        id,
+      ]);
+      return result;
+    } catch (error) {
+      console.log("更新数据异常");
+    }
   }
 }
 
