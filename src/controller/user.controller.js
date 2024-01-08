@@ -4,7 +4,6 @@ class UserController {
   async create(ctx, next) {
     // 获取用户传递过来的信息
     const user = ctx.request.body;
-    // console.log(user);
 
     // 将信息存储到数据库
     const result = await userService.create(user);
@@ -12,7 +11,6 @@ class UserController {
     // 查看存储的信息，将信息返回客户端
     ctx.body = {
       message: "创建用户成功~",
-      data: result,
     };
   }
 
@@ -72,6 +70,18 @@ class UserController {
         list: result,
         totalCount: totalCount[0].userCount,
       },
+    };
+  }
+
+  // 编辑用户信息
+  async editUserInfo(ctx, next) {
+    const user = ctx.request.body;
+    // 将信息存储到数据库
+    const result = await userService.editUserInfo(user);
+
+    // 查看存储的信息，将信息返回客户端
+    ctx.body = {
+      message: "编辑用户成功~",
     };
   }
 }
