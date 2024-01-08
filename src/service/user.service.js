@@ -7,9 +7,8 @@ class UserService {
       user;
     // 拼接sql语句
     const statement =
-      "INSERT INTO user (username,realname, password,cellphone,roleId,departmentId) VALUES (?, ?,?,?,?,?);";
+      "INSERT INTO user (username,realname, password,cellphone,roleId,departmentId) VALUES (?,?,?,?,?,?);";
     // 执行语句
-    console.log(user);
 
     const [result] = await connection.execute(statement, [
       username,
