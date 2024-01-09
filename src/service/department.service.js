@@ -10,6 +10,13 @@ class DepartmemtService {
     const [result] = await connection.execute(statement, [size, offset]);
     return result;
   }
+  // 获取部门列表
+  async queryDepartmentList() {
+    const statement = "SELECT * FROM department";
+    const [result] = await connection.execute(statement);
+    return result;
+  }
+
   //获取用户数
   async queryDepartmentCount() {
     const statement = "select count(*) as departmentCount from department;";

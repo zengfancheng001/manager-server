@@ -24,9 +24,12 @@ class departmentController {
   }
   // 获取部门列表
   async queryDepartmentList(ctx, next) {
-    const { offset, size } = ctx.request.body;
+    if (ctx.request.body) {
+      const { offset, size } = ctx.request.body;
+      const result = await DepartmentService.queryDepartmentList(offset, size);
+    }
+    const result = await DepartmentService.queryDepartmentList();
 
-    const result = await DepartmentService.queryDepartmentList(offset, size);
     const totalCount = await DepartmentService.queryDepartmentCount();
     ctx.body = {
       code: 0,
